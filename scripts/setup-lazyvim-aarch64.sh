@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y git curl wget unzip xz-utils build-essential cmake ninja-build gettext ripgrep fd-find fzf fontconfig
 
