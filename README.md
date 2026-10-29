@@ -6,6 +6,8 @@
   
 ### One script for installing all the requirements for working with LazyVim
 
+[Quick start](#quick-start) . [What the script does](#what-the-script-does) . [Not included](#not-included)
+
 </div>
 <br />
 
