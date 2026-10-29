@@ -2,11 +2,20 @@
   
 # LazyVim Installation Setup
   
-### One file for installing all the requirements for working with LazyVim
+### One script for installing all the requirements for working with LazyVim
 
 [Architecture x86](#Architetecture-x86_64) · [Architeture arm64/aarch64](#Architecture-arm64/aarch64)
 
 </div>
+
+---
+## Automated Version setup
+If you want an automated version of the script after downloading all the files run:
+```bash
+bash install-lazyvim.sh 
+```
+
+
 
 > [!IMPORTANT]
 > Depending on the architeture of your CPU there are different scripts, to check your CPU architeture run:
