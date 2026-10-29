@@ -2,7 +2,7 @@
 
 **English**  
   
-# LazyVim Installation Setup
+# LIS: LazyVim Installation Setup
   
 ### One script for installing all the requirements for working with LazyVim
 
