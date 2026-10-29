@@ -12,7 +12,9 @@
 > uname -m
 > ```
 
-## Architecture x86_64
+[Architecture x86](#Architetecture-x86_64) · [Architeture arm64/aarch64](#Architecture-arm64/aarch64)
+
+## Architecture x86_64 
 
 If your CPU architeture is x86_64:
 Download the file [setup-lazyvim-x86_64](scripts/setup-lazyvim-x86_64.sh).
