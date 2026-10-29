@@ -4,6 +4,8 @@
   
 ### One file for installing all the requirements for working with LazyVim
 
+[Architecture x86](#Architetecture-x86_64) · [Architeture arm64/aarch64](#Architecture-arm64/aarch64)
+
 </div>
 
 > [!IMPORTANT]
@@ -12,7 +14,6 @@
 > uname -m
 > ```
 
-[Architecture x86](#Architetecture-x86_64) · [Architeture arm64/aarch64](#Architecture-arm64/aarch64)
 
 ## Architecture x86_64 
 
