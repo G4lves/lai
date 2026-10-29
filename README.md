@@ -15,7 +15,11 @@
 
 <br />
 
-## Automated Version setup
+---
+
+Want to just run a script and have LazyVim installed included all of the requirements, now is possible.
+
+## Quick start
 After downloading the repo run:
 ```bash
 bash install-lazyvim.sh 
