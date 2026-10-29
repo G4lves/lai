@@ -15,8 +15,6 @@
 
 <br />
 
----
-
 ## Automated Version setup
 After downloading the repo run:
 ```bash
