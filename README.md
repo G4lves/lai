@@ -1,13 +1,13 @@
 <div align="center">
   
-# LazyVim Installation comands
+# LazyVim Installation Setup
   
-### One file for installing the requirements for working with LazyVim
+### One file for installing all the requirements for working with LazyVim
 
 </div>
 
 > [!IMPORTANT]
-> Depending on the architeture of your CPU there are different scripts, to check your CPU architeture execute the following comand:
+> Depending on the architeture of your CPU there are different scripts, to check your CPU architeture run:
 > ```bash
 > uname -m
 > ```
