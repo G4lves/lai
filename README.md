@@ -1,3 +1,21 @@
-# LazyVim-Installation-comands
+<div align="center">
+  
+# LazyVim Installation comands
+  
+### One file for installing the requirements for working with LazyVim
 
-THis are the comand that you have to copy paste for install LazyVim inside the linux terminal
+</div>
+
+> [!IMPORTANT]
+> Depending on the architeture of your computer there are different scripts, to check your computer architeture execute the following comand:
+> ```bash
+> uname -m
+> ```
+
+## Architecture x86_64
+
+If your Computer has the x86_64 version:
+Download the (/linuxComandsLazyVimInstallation)
+
+
+
