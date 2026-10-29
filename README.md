@@ -15,7 +15,7 @@
 ## Architecture x86_64
 
 If your Computer has the x86_64 version:
-[Download the ](scripts/setup-lazyvim-x86_64.sh)
+Download and execute in the terminal the [setup-lazyvim-x86_64](scripts/setup-lazyvim-x86_64.sh)
 
 
 
