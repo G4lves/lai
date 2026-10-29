@@ -19,7 +19,7 @@
 
 ---
 
-Want to just run a script and have LazyVim installed included all of the requirements, now is possible.
+Have you just install linux and want to just run a script and have LazyVim installed, with all of the requirements, now is possible.
 
 ## Quick start
 1. After downloading the repo from this repository run:
