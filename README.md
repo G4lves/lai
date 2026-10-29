@@ -2,7 +2,7 @@
 
 **English**  
   
-# LIS: LazyVim Installation Setup
+# LAI: LazyVim Automated Installation
   
 ### One script for installing all the requirements for working with LazyVim
 
