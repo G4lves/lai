@@ -15,7 +15,7 @@
 ## Architecture x86_64
 
 If your Computer has the x86_64 version:
-Download the (/linuxComandsLazyVimInstallation)
+Download the (scripts/setup-lazyvim-x86_64.sh)
 
 
 
