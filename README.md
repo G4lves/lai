@@ -12,10 +12,10 @@
 <br />
 
 > [!IMPORTANT]
-> **Support systms:** Debian, Ubuntu and derivatives (anything that uses 'apt') on
-> aarch64 (arm64) and x86_64 (amd64). The script check both and stops with a clear message on anything else.
+> **Supported systems:** Debian, Ubuntu and derivatives (anything that uses 'apt') on
+> aarch64 (arm64) and x86_64 (amd64). The script checks both and stops with a clear message on anything else.
 > 
-> Run it as your normal user, **not** as root or with 'sudo' itself when it needs to.
+> Run it as your normal user, **not** as root or with 'sudo'. It calls 'sudo' itself when it needs to.
 
 <br />
 
@@ -26,13 +26,13 @@ Just installed Linux and want LazyVim, with all of its requirements, from a sing
 ## Quick start
 1. Clone this repository and run:
 ```bash
-bash install-lazyvim.sh 
+bash scripts/install-lazyvim.sh 
 ```
 2. Enter your sudo password when asked
 
 3. Neovim opens at the end. LazyVim installs its plugins on first launch, so wait until it finishes, then quit with:
 ```code
-:q 
+:qa 
 ```
 4. To open LazyVim run:
 ```bash
@@ -41,7 +41,7 @@ nvim
 
 ## Options
 ```bash
-bash install-lazyvim.sh -y --upgrade 
+bash scripts/install-lazyvim.sh -y --upgrade 
 bash scripts/install-lazyvim.sh --yes --with-extras --no-launch
 ```
 
