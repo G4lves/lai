@@ -2,20 +2,18 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Security fixes are provided for the latest published version of LAI. Upgrade to the latest release before reporting a problem that may already have been resolved.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Do not disclose vulnerabilities in a public issue.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Use **Report a vulnerability** in the repository's **Security** tab as the preferred way to submit the report privately. Do not open a public issue to request a private contact channel.
+
+Include the affected LAI version, operating system/distribution, version, impact, reproduction conditions, and any suggested
+mitigation in the private report.
+
+The maintainer will acknowledge the report, assess its scope, and coordinate
+remediation and disclosure timing with the reporter. Please allow time for
+provider-dependent behavior to be reproduced safely.
