@@ -1,0 +1,221 @@
+==============================================================
+ CHEAT SHEET LAZYVIM PER FILE C
+==============================================================
+Leader = Space (barra spaziatrice).
+Premi Space e aspetta: which-key mostra tutte le scorciatoie.
+
+
+--------------------------------------------------------------
+1. SETUP PER IL C
+--------------------------------------------------------------
+Requisiti: Neovim 0.10+, git, gcc o clang, make, Nerd Font.
+
+1) Apri Neovim e lancia  :LazyExtras  -> abilita con "x":
+   - lang.clangd   LSP per C/C++ (completamento, errori, goto)
+   - dap.core      debugger
+   - lang.cmake    solo se usi CMake
+2) Riavvia: Mason installa clangd e codelldb (controlla :Mason)
+3) Per progetti multi-file serve compile_commands.json:
+   - CMake:    cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+   - Makefile: bear -- make
+   - Singolo file: funziona anche senza
+
+:Lazy         gestione plugin
+:LazyExtras   abilita/disabilita extra di linguaggio
+:Mason        installa LSP, debugger, formatter
+:LspInfo      verifica che clangd sia attivo sul file
+:checkhealth  diagnostica generale
+
+
+--------------------------------------------------------------
+2. COMPILARE ED ESEGUIRE
+--------------------------------------------------------------
+LazyVim non ha un tasto "Run" predefinito.
+
+Terminale flottante:
+  Ctrl+/  oppure  Space f t     apri/chiudi terminale
+  Space f T                     terminale nella cartella corrente
+  Ctrl+\ Ctrl+n  o  Esc Esc     esci da modalita' terminale
+
+  Nel terminale:
+    gcc -Wall -Wextra -g main.c -o main && ./main
+
+Dal comando Vim:
+  :!gcc -Wall -Wextra -g % -o %:r && ./%:r
+  (% = file corrente, %:r = nome senza estensione)
+
+Con Makefile e quickfix:
+  :make              esegue make, errori in quickfix
+  :copen / :cclose   apri/chiudi lista errori
+  ]q / [q            errore successivo/precedente
+
+Scorciatoia personalizzata
+(in ~/.config/nvim/lua/config/keymaps.lua):
+
+  vim.keymap.set("n", "<leader>rr", function()
+    vim.cmd("write")
+    local file = vim.fn.expand("%")
+    local out = vim.fn.expand("%:r")
+    vim.cmd("split | terminal gcc -Wall -Wextra -g " .. file
+      .. " -o " .. out .. " && ./" .. out)
+    vim.cmd("startinsert")
+  end, { desc = "Compila ed esegui C" })
+
+  vim.keymap.set("n", "<leader>rc", function()
+    vim.cmd("write")
+    vim.cmd("!gcc -Wall -Wextra -g % -o %:r")
+  end, { desc = "Compila C" })
+
+
+--------------------------------------------------------------
+3. DEBUG (extra dap.core)
+--------------------------------------------------------------
+Space d b    breakpoint on/off
+Space d B    breakpoint condizionale
+Space d c    avvia / continua
+Space d i    step into
+Space d o    step over
+Space d O    step out
+Space d u    UI del debugger
+Space d t    termina sessione
+Space d e    valuta espressione
+
+Compila sempre con -g per avere i simboli di debug.
+
+
+--------------------------------------------------------------
+4. NAVIGAZIONE FILE E PROGETTO
+--------------------------------------------------------------
+Space Space / Space f f    cerca file per nome
+Space /                    grep nel progetto
+Space ,                    cambia buffer
+Space f r                  file recenti
+Space e                    esplora file (Neo-tree)
+Shift+h / Shift+l          buffer precedente / successivo
+Space b d                  chiudi buffer
+Space b o                  chiudi gli altri buffer
+Ctrl+h/j/k/l               muoviti tra finestre
+Space -  /  Space |        split orizzontale / verticale
+Space w d                  chiudi finestra
+Ctrl+s                     salva
+Space q q                  esci da tutto
+
+
+--------------------------------------------------------------
+5. COMANDI PER IL C (LSP clangd)
+--------------------------------------------------------------
+Space c h     passa da .c a .h e viceversa
+g d           vai alla definizione
+g D           vai alla dichiarazione
+g r           mostra riferimenti
+g I           vai all'implementazione
+g y           definizione del tipo
+K             documentazione / hover
+g K           firma della funzione
+Ctrl+k (ins)  firma funzione mentre scrivi
+Space c a     code action (fix suggeriti)
+Space c r     rinomina simbolo ovunque
+Space c f     formatta (clang-format)
+Space c d     errore sulla riga
+] d / [ d     diagnostica successiva/precedente
+] e / [ e     errore successivo/precedente
+Space x x     pannello diagnostiche (Trouble)
+Space c s     simboli del file
+Space s s     cerca simbolo nel file
+Space s S     cerca simbolo nel workspace
+
+Esempio .clang-format nella root:
+  BasedOnStyle: LLVM
+  IndentWidth: 4
+  ColumnLimit: 100
+
+
+--------------------------------------------------------------
+6. COMANDI VIM ESSENZIALI
+--------------------------------------------------------------
+MODALITA'
+  i / a         insert prima / dopo il cursore
+  I / A         insert a inizio / fine riga
+  o / O         nuova riga sotto / sopra
+  v / V / Ctrl+v   visual: carattere / riga / blocco
+  Esc o jk      torna in Normal
+  :             linea di comando
+
+MOVIMENTO
+  h j k l       sinistra, giu', su, destra
+  w / b / e     parola avanti / indietro / fine parola
+  0 / ^ / $     inizio riga / primo carattere / fine riga
+  gg / G        inizio / fine file
+  {n}G o :{n}   vai alla riga n
+  %             salta alla parentesi corrispondente
+  Ctrl+d / u    mezza pagina giu' / su
+  s + 2 car.    Flash: salto rapido
+  Ctrl+o / i    posizione precedente / successiva
+
+MODIFICA
+  x             cancella carattere
+  dd / yy / p   taglia riga / copia riga / incolla
+  dw / d$       cancella parola / fino a fine riga
+  ciw           cambia parola sotto il cursore
+  ci{ / di{     cambia / cancella dentro { }
+  ci( / ci"     idem dentro ( ) o " "
+  >> / <<       indenta / de-indenta
+  u / Ctrl+r    annulla / ripeti
+  .             ripeti ultima modifica
+  gcc           commenta/decommenta riga
+  gc (visual)   commenta la selezione
+  Alt+j / Alt+k sposta riga giu' / su
+  gsa/gsd/gsr   surround: aggiungi / cancella / sostituisci
+
+CERCA E SOSTITUISCI
+  /testo, n, N          cerca, poi prossimo/precedente
+  *                     cerca parola sotto il cursore
+  :%s/vecchio/nuovo/g   sostituisci in tutto il file
+  :%s/vecchio/nuovo/gc  come sopra, con conferma
+  Space s r             cerca e sostituisci nel progetto
+  Esc                   rimuovi evidenziazione
+
+FILE E USCITA
+  :w            salva
+  :q / :q!      esci / esci senza salvare
+  :wq o ZZ      salva ed esci
+  :e file.c     apri file
+  :wa           salva tutti i buffer
+
+
+--------------------------------------------------------------
+7. WORKFLOW TIPICO
+--------------------------------------------------------------
+  mkdir progetto && cd progetto
+  nvim main.c
+
+1) Premi i e scrivi:
+
+     #include <stdio.h>
+
+     int main(void) {
+         printf("Ciao, LazyVim!\n");
+         return 0;
+     }
+
+2) Esc, poi Ctrl+s per salvare
+3) Space c f per formattare
+4) Ctrl+/ per il terminale, poi:
+     gcc -Wall -Wextra -g main.c -o main && ./main
+5) Errori: Space x x per vederli, Space c a per i fix rapidi
+6) Debug: Space d b sulla riga voluta, poi Space d c
+
+
+--------------------------------------------------------------
+8. TRUCCHI UTILI
+--------------------------------------------------------------
+- which-key: Space e aspetta, oppure Space s k per cercare keymap
+- Help: :help argomento  oppure  Space s h
+- Snippet: scrivi for, if, main e conferma con Tab o Enter
+- Autocompletamento: Ctrl+Space apre, Ctrl+n/p scorre, Enter conferma
+- Header non trovati: controlla compile_commands.json e :LspInfo
+- Aggiornare tutto: :Lazy sync (o Space l)
+- Cronologia undo: Space s u
+
+Nota: alcune scorciatoie possono variare tra versioni di LazyVim.
+In caso di dubbio, Space + which-key mostra quelle effettive.
