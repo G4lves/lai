@@ -2,6 +2,10 @@
  * ============================================================================
  *  PROCESSI, FORK, WAITPID E PIPE - CODICE COMMENTATO
  * ============================================================================
+ *gcc main.c -o main      # compila e crea l'eseguibile "main"
+./main                  # esegui
+ *
+ *gcc -Wall -Wextra -g main.c -o main && ./main
  *
  *  DESCRIZIONE GENERALE
  *  --------------------
